@@ -57,12 +57,12 @@
       justify-content: space-between;
       height: 56px;
     }
-    .nav-logo {
-      font-family: var(--serif);
-      font-size: 17px;
-      color: var(--text-primary);
-      text-decoration: none;
-      letter-spacing: 0.01em;
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      max-width: 120px;
+      object-fit: contain;
+      display: block;
     }
     .nav-links {
       display: flex;
@@ -182,13 +182,12 @@
     .link-pill-primary:hover { background: var(--accent-light); }
     .link-pill-outline {
       background: transparent;
-      border: 1px solid var(--border-strong);
-      color: var(--text-secondary);
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
     }
     .link-pill-outline:hover {
-      background: var(--bg-card);
-      border-color: var(--accent);
-      color: var(--accent);
+      background: var(--accent);
+      color: #fff;
     }
 
     /* Photo */
@@ -207,10 +206,8 @@
 
     /* ── SKILLS ROW ── */
     .skills-strip {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 1.75rem 0;
-      margin-bottom: 4rem;
+      padding: 0.5rem 0 1rem;
+      margin-bottom: 0;
     }
     .skills-grid {
       display: grid;
@@ -803,7 +800,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="#"><img src="images/logo.png" alt="THN Logo" style="height:32px;width:auto;display:block;"></a>
+    <a class="nav-logo" href="#"><img src="images/logo.png" alt="THN Logo"></a>
     <ul class="nav-links">
       <li><a href="#" data-i18n="nav_home">Home</a></li>
       <li><a href="#education" data-i18n="nav_education">Education</a></li>
@@ -848,6 +845,7 @@
         <a class="link-pill link-pill-outline" href="mailto:tharhtetnyan31@gmail.com">Email</a>
         <a class="link-pill link-pill-outline" href="https://www.linkedin.com/in/thar-htet-nyan-086132299/">LinkedIn</a>
         <a class="link-pill link-pill-outline" href="https://github.com/tharhtetnyan31/">GitHub</a>
+        <a class="link-pill link-pill-outline" href="https://scholar.google.com/citations?hl=en&user=9_WVu4YAAAAJ">Google Scholar</a>
       </div>
     </div>
 
@@ -905,7 +903,6 @@
     <div class="section-header">
       <h2>Research</h2>
       <div class="section-line"></div>
-      <span class="section-count">04</span>
     </div>
 
     <div class="research-list">
@@ -965,7 +962,6 @@
     <div class="section-header">
       <h2>Projects</h2>
       <div class="section-line"></div>
-      <span class="section-count">06</span>
     </div>
 
     <div class="projects-grid">
@@ -1138,7 +1134,6 @@
     <div class="section-header">
       <h2>Awards &amp; Honours</h2>
       <div class="section-line"></div>
-      <span class="section-count">09</span>
     </div>
 
     <div class="awards-grid">
@@ -1237,7 +1232,6 @@
     <div class="section-header">
       <h2>Certifications</h2>
       <div class="section-line"></div>
-      <span class="section-count">13</span>
     </div>
 
     <div class="cert-list">
@@ -1352,31 +1346,31 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="section-header">
-      <h2>Contact</h2>
+      <h2 data-i18n-contact-title>Contact</h2>
       <div class="section-line"></div>
     </div>
     <div class="contact-wrap">
-      <p class="contact-sub">Feel free to reach out for research collaborations, project inquiries, or just to connect.</p>
+      <p class="contact-sub" data-i18n-contact-sub>Feel free to reach out for research collaborations, project inquiries, or just to connect.</p>
       <div class="contact-card">
         <div class="contact-field-row">
           <div class="contact-field">
-            <label class="contact-label">Name</label>
-            <input class="contact-input" type="text" id="c-name" placeholder="Your name">
+            <label class="contact-label" data-i18n-contact-name>Name</label>
+            <input class="contact-input" type="text" id="c-name" placeholder="Your name" data-i18n-ph-name>
           </div>
           <div class="contact-field">
-            <label class="contact-label">Email</label>
+            <label class="contact-label" data-i18n-contact-email>Email</label>
             <input class="contact-input" type="email" id="c-email" placeholder="your@email.com">
           </div>
         </div>
         <div class="contact-field">
-          <label class="contact-label">Subject</label>
-          <input class="contact-input" type="text" id="c-subject" placeholder="Subject">
+          <label class="contact-label" data-i18n-contact-subject>Subject</label>
+          <input class="contact-input" type="text" id="c-subject" placeholder="Subject" data-i18n-ph-subject>
         </div>
         <div class="contact-field">
-          <label class="contact-label">Message</label>
-          <textarea class="contact-input contact-textarea" id="c-message" placeholder="Your message..."></textarea>
+          <label class="contact-label" data-i18n-contact-message>Message</label>
+          <textarea class="contact-input contact-textarea" id="c-message" placeholder="Your message..." data-i18n-ph-message></textarea>
         </div>
-        <button class="contact-send" onclick="sendEmail()">Send Message →</button>
+        <button class="contact-send" onclick="sendEmail()" data-i18n-contact-send>Send Message →</button>
       </div>
     </div>
   </section>
@@ -1409,6 +1403,9 @@ const translations = {
     sec_certifications: 'Certifications',
     skills_sim: 'Simulation', skills_cad: 'CAD & PCB', skills_prog: 'Programming', skills_hw: 'Hardware',
     footer_sub: 'Biomedical Engineering · Soonchunhyang University · iMeD Lab',
+    contact_title: 'Contact', contact_sub: 'Feel free to reach out for research collaborations, project inquiries, or just to connect.',
+    contact_name: 'Name', contact_email: 'Email', contact_subject: 'Subject', contact_message: 'Message',
+    contact_send: 'Send Message →', ph_name: 'Your name', ph_subject: 'Subject', ph_message: 'Your message...',
   },
   ko: {
     nav_home: '홈', nav_education: '학력', nav_research: '연구', nav_projects: '프로젝트',
@@ -1423,6 +1420,9 @@ const translations = {
     sec_certifications: '자격증 및 수료',
     skills_sim: '시뮬레이션', skills_cad: 'CAD & PCB', skills_prog: '프로그래밍', skills_hw: '하드웨어',
     footer_sub: '의공학과 · 순천향대학교 · iMeD Lab',
+    contact_title: '문의 및 연락', contact_sub: '연구 협업, 프로젝트 문의 또는 단순한 네트워킹을 원하신다면 언제든 편하게 연락해 주시기 바랍니다.',
+    contact_name: '성함', contact_email: '이메일 주소', contact_subject: '제목', contact_message: '내용',
+    contact_send: '메시지 보내기 →', ph_name: '성함을 입력해 주세요', ph_subject: '제목', ph_message: '내용을 입력해 주세요',
   },
   my: {
     nav_home: 'ပင်မ', nav_education: 'ပညာရေး', nav_research: 'သုတေသန', nav_projects: 'ပရောဂျက်များ',
@@ -1437,6 +1437,9 @@ const translations = {
     sec_certifications: 'လက်မှတ်များ',
     skills_sim: 'ကွန်ပျူတာသုံး ပုံစံတူ စမ်းသပ်တွက်ချက်ခြင်း', skills_cad: 'CAD & PCB', skills_prog: 'ပရိုဂရမ်ရေးခြင်း', skills_hw: 'ဟာ့ဒ်ဝဲ',
     footer_sub: 'ဇီဝဆေးပညာ အင်ဂျင်နီယာ · Soonchunhyang တက္ကသိုလ် · iMeD Lab',
+    contact_title: 'ဆက်သွယ်ရန်', contact_sub: 'သုတေသနလုပ်ငန်းများ အတူတူလုပ်ဆောင်ရန်၊ ပရောဂျက်များနှင့်ပတ်သက်၍ စုံစမ်းမေးမြန်းရန် သို့မဟုတ် ရင်းနှီးစွာ ချိတ်ဆက်နိုင်ရန်အတွက် အချိန်မရွေး ဆက်သွယ်နိုင်ပါသည်။',
+    contact_name: 'အမည်', contact_email: 'အီးမေးလ်', contact_subject: 'အကြောင်းအရာ', contact_message: 'ပေးပို့လိုသည့် အကြောင်းအရာ',
+    contact_send: 'သတင်းစကားပေးပို့ရန် →', ph_name: 'အမည်ထည့်ပါ', ph_subject: 'အကြောင်းအရာ', ph_message: 'ပေးပို့လိုသည့် အကြောင်းအရာ',
   }
 };
 
@@ -1448,6 +1451,7 @@ const sectionKeys = {
   sec_awards: ['Awards & Honours','수상 및 장학','ဆုနှင့် ဂုဏ်ထူး'],
   sec_languages: ['Languages & Test Scores','언어 및 시험 성적','ဘာသာစကားနှင့် စာမေးပွဲရမှတ်'],
   sec_certifications: ['Certifications','자격증 및 수료','လက်မှတ်များ'],
+  contact_title: ['Contact','문의 및 연락','ဆက်သွယ်ရန်'],
 };
 
 function setLang(lang) {
@@ -1477,6 +1481,26 @@ function setLang(lang) {
     if (skillMap[lang][i]) el.textContent = skillMap[lang][i];
   });
 
+  // contact section
+  const ctSub = document.querySelector('[data-i18n-contact-sub]');
+  if (ctSub) ctSub.textContent = t.contact_sub;
+  const ctName = document.querySelector('[data-i18n-contact-name]');
+  if (ctName) ctName.textContent = t.contact_name;
+  const ctEmail = document.querySelector('[data-i18n-contact-email]');
+  if (ctEmail) ctEmail.textContent = t.contact_email;
+  const ctSubject = document.querySelector('[data-i18n-contact-subject]');
+  if (ctSubject) ctSubject.textContent = t.contact_subject;
+  const ctMsg = document.querySelector('[data-i18n-contact-message]');
+  if (ctMsg) ctMsg.textContent = t.contact_message;
+  const ctSend = document.querySelector('[data-i18n-contact-send]');
+  if (ctSend) ctSend.textContent = t.contact_send;
+  const phName = document.getElementById('c-name');
+  if (phName) phName.placeholder = t.ph_name;
+  const phSubject = document.getElementById('c-subject');
+  if (phSubject) phSubject.placeholder = t.ph_subject;
+  const phMsg = document.getElementById('c-message');
+  if (phMsg) phMsg.placeholder = t.ph_message;
+
   // footer sub
   document.querySelectorAll('.footer-sub').forEach(el => el.textContent = t.footer_sub);
 
@@ -1485,8 +1509,7 @@ function setLang(lang) {
   event.target.classList.add('active');
 
   // update html lang attribute
-  const langAttr = { en: 'en', ko: 'ko', my: 'my' };
-  document.documentElement.lang = langAttr[lang];
+  document.documentElement.lang = lang;
 }
 function sendEmail() {
   const name    = document.getElementById('c-name').value.trim();
