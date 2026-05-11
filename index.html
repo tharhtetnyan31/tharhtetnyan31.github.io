@@ -91,7 +91,7 @@
     .hero {
       padding: 5rem 0 4rem;
       display: grid;
-      grid-template-columns: 1fr 200px;
+      grid-template-columns: 1fr auto;
       gap: 3rem;
       align-items: start;
     }
@@ -195,27 +195,14 @@
     .hero-photo-wrap {
       position: relative;
       padding-top: 0.5rem;
+      flex-shrink: 0;
     }
     .hero-photo {
-      width: 100%;
-      aspect-ratio: 1;
+      width: 180px;
+      height: auto;
       border-radius: 12px;
-      object-fit: cover;
       display: block;
       border: 1px solid var(--border);
-    }
-    .photo-badge {
-      position: absolute;
-      bottom: -10px;
-      left: -10px;
-      background: var(--accent);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
     }
 
     /* ── SKILLS ROW ── */
@@ -400,6 +387,284 @@
       line-height: 1.6;
     }
 
+    /* ── EDUCATION TIMELINE ── */
+    .edu-list { display: flex; flex-direction: column; gap: 0; }
+    .edu-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0 1.75rem;
+      position: relative;
+    }
+    .edu-item + .edu-item { margin-top: 0; }
+    .edu-year-col {
+      text-align: right;
+      padding-top: 0.15rem;
+      position: relative;
+    }
+    .edu-year {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .edu-dot-col {
+      position: relative;
+      padding-left: 1.5rem;
+      padding-bottom: 2rem;
+      border-left: 1.5px solid var(--border);
+    }
+    .edu-dot-col::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+    .edu-item:last-child .edu-dot-col { border-left-color: transparent; }
+    .edu-inst {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+    .edu-degree {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 0.3rem;
+    }
+    .edu-grade {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--tag-bg);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    /* ── EXPERIENCE TIMELINE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0 1.75rem;
+    }
+    .exp-date {
+      text-align: right;
+      padding-top: 0.15rem;
+    }
+    .exp-date-text {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .exp-dot-col {
+      position: relative;
+      padding-left: 1.5rem;
+      padding-bottom: 1.75rem;
+      border-left: 1.5px solid var(--border);
+    }
+    .exp-dot-col::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--bg-subtle);
+      border: 2px solid var(--accent);
+    }
+    .exp-item:last-child .exp-dot-col { border-left-color: transparent; }
+    .exp-role {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.1rem;
+    }
+    .exp-org {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 0.3rem;
+    }
+    .exp-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .exp-type {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      padding: 0.15rem 0.45rem;
+      border-radius: 3px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* ── AWARDS ── */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .award-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .award-icon {
+      font-size: 20px;
+      margin-bottom: 0.25rem;
+    }
+    .award-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+    .award-issuer {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .award-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+    .award-highlight {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, #F0F8F4 0%, #fff 60%);
+    }
+
+    /* ── LANGUAGE & TEST SCORES ── */
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .lang-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .lang-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .lang-level {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 0.6rem;
+    }
+    .lang-bar-bg {
+      height: 4px;
+      background: var(--bg-subtle);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .lang-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 99px;
+    }
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .score-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .score-test {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .score-value {
+      font-family: var(--mono);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+    .score-max {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .score-detail {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .cert-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .cert-left { flex: 1; min-width: 0; }
+    .cert-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+    .cert-issuer {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .cert-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cert-highlight .cert-name { color: var(--accent); }
+
+    /* two-col layout for edu + experience side by side */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; gap: 2rem; } }
+
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
@@ -437,8 +702,10 @@
   <div class="nav-inner">
     <a class="nav-logo" href="#">THN</a>
     <ul class="nav-links">
+      <li><a href="#education">Education</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#awards">Awards</a></li>
       <li><a href="mailto:tharhtetnyan31@gmail.com">Contact</a></li>
     </ul>
   </div>
@@ -449,7 +716,7 @@
   <div class="hero">
     <div class="hero-text">
       <p class="hero-eyebrow">Biomedical Engineering</p>
-      <h1>Thar Htet<br><em>Nyan</em></h1>
+      <h1>Thar Htet Nyan</h1>
       <p class="hero-bio">
         Final-year BME student at <a href="https://home.sch.ac.kr/en/" style="color:var(--accent);text-decoration:none;">Soonchunhyang University</a> and 
         <a href="https://www.studyinkorea.go.kr/en/main.do" style="color:var(--accent);text-decoration:none;">Global Korea Scholar</a> (2022).
@@ -477,7 +744,6 @@
 
     <div class="hero-photo-wrap">
       <img class="hero-photo" src="images/THN.jpg" alt="Thar Htet Nyan">
-      <span class="photo-badge">iMeD Lab</span>
     </div>
   </div>
 
@@ -647,6 +913,322 @@
           <p class="project-desc">Sorts 16 blocks in 20 seconds. Motorized pusher, rotating rail, push-button trigger, and real-time color sensor integration.</p>
         </div>
       </a>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION & EXPERIENCE -->
+  <section id="education">
+    <div class="two-col">
+
+      <!-- Education -->
+      <div>
+        <div class="section-header">
+          <h2>Education</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="edu-list">
+
+          <div class="edu-item">
+            <div class="edu-year-col"><span class="edu-year">2023 – 2027</span></div>
+            <div class="edu-dot-col">
+              <p class="edu-inst">Soonchunhyang University</p>
+              <p class="edu-degree">B.E. Biomedical Engineering</p>
+              <span class="edu-grade">⭐ GPA 4.45 / 4.5</span>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-year-col"><span class="edu-year">2022 – 2023</span></div>
+            <div class="edu-dot-col">
+              <p class="edu-inst">Dongseo University</p>
+              <p class="edu-degree">Korean Language Program</p>
+              <span class="edu-grade">GPA 4.49 / 4.5</span>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-year-col"><span class="edu-year">2019 – 2020</span></div>
+            <div class="edu-dot-col">
+              <p class="edu-inst">Aung Academy Private School</p>
+              <p class="edu-degree">High School Diploma</p>
+              <span class="edu-grade">GPA 4.5 / 4.5</span>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-year-col"><span class="edu-year">2009 – 2019</span></div>
+            <div class="edu-dot-col">
+              <p class="edu-inst">No. 5 BEHS Botahtaung</p>
+              <p class="edu-degree">High School</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div>
+        <div class="section-header">
+          <h2>Experience</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="exp-list">
+
+          <div class="exp-item">
+            <div class="exp-date"><p class="exp-date-text">Mar 2025<br>Present</p></div>
+            <div class="exp-dot-col">
+              <p class="exp-role">Undergraduate Researcher <span class="exp-type">Full-time</span></p>
+              <p class="exp-org">iMeD Lab · Soonchunhyang University</p>
+              <p class="exp-desc">TIS modeling, electrode optimization, patient-specific bladder digital twins, embedded systems development.</p>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-date"><p class="exp-date-text">Mar 2025<br>May 2025</p></div>
+            <div class="exp-dot-col">
+              <p class="exp-role">Student Library Assistant <span class="exp-type">Part-time</span></p>
+              <p class="exp-org">Soonchunhyang University</p>
+              <p class="exp-desc">Korean–English translation support for library resources and international student services.</p>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-date"><p class="exp-date-text">Jan 2025<br>Feb 2025</p></div>
+            <div class="exp-dot-col">
+              <p class="exp-role">Research Intern <span class="exp-type">Internship</span></p>
+              <p class="exp-org">iMeD Lab · Soonchunhyang University</p>
+              <p class="exp-desc">ATmega-based embedded system prototyping and R&D support for implantable device projects.</p>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-date"><p class="exp-date-text">Aug 2024<br>Sep 2024</p></div>
+            <div class="exp-dot-col">
+              <p class="exp-role">Library Supporter <span class="exp-type">Part-time</span></p>
+              <p class="exp-org">Soonchunhyang University</p>
+              <p class="exp-desc">Conducted English-language orientation tours of the university library for incoming international students.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AWARDS & HONOURS -->
+  <section id="awards">
+    <div class="section-header">
+      <h2>Awards &amp; Honours</h2>
+      <div class="section-line"></div>
+      <span class="section-count">09</span>
+    </div>
+
+    <div class="awards-grid">
+
+      <div class="award-card award-highlight">
+        <div class="award-icon">🏅</div>
+        <p class="award-title">GKS Academic Excellence Award</p>
+        <p class="award-issuer">Ministry of Education, Republic of Korea</p>
+        <p class="award-date">Dec 2025</p>
+      </div>
+
+      <div class="award-card award-highlight">
+        <div class="award-icon">🏆</div>
+        <p class="award-title">Dean's List Award × 6 semesters</p>
+        <p class="award-issuer">Soonchunhyang University</p>
+        <p class="award-date">2023 – 2025 (every semester)</p>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon">🎓</div>
+        <p class="award-title">Global Korea Scholarship (GKS) Undergraduate</p>
+        <p class="award-issuer">NIIED · Ministry of Education</p>
+        <p class="award-date">Mar 2022 — full tuition, stipend, airfare, insurance</p>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon">⭐</div>
+        <p class="award-title">Outstanding Student Award</p>
+        <p class="award-issuer">Dongseo University</p>
+        <p class="award-date">Feb 2023</p>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon">📋</div>
+        <p class="award-title">BACI Full Scholarship Candidate</p>
+        <p class="award-issuer">Burmese American Community Institute</p>
+        <p class="award-date">Sep 2021</p>
+      </div>
+
+      <div class="award-card">
+        <div class="award-icon">📝</div>
+        <p class="award-title">All Distinctions — Matriculation Examination</p>
+        <p class="award-issuer">Ministry of Education, Myanmar · Highest score in school</p>
+        <p class="award-date">Aug 2020</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LANGUAGES & TEST SCORES -->
+  <section id="languages">
+    <div class="section-header">
+      <h2>Languages &amp; Test Scores</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="lang-grid">
+      <div class="lang-card">
+        <p class="lang-name">Burmese (Myanmar)</p>
+        <p class="lang-level">Native / Bilingual</p>
+        <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-card">
+        <p class="lang-name">Korean</p>
+        <p class="lang-level">Professional · TOPIK Level 6</p>
+        <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="lang-card">
+        <p class="lang-name">English</p>
+        <p class="lang-level">Professional · TOEIC 855</p>
+        <div class="lang-bar-bg"><div class="lang-bar-fill" style="width:87%"></div></div>
+      </div>
+    </div>
+
+    <div class="score-grid">
+      <div class="score-card">
+        <p class="score-test">TOPIK</p>
+        <p class="score-value">6 <span class="score-max">/ 6</span></p>
+        <p class="score-detail">Score 273 / 300 · Apr 2025</p>
+      </div>
+      <div class="score-card">
+        <p class="score-test">TOPIK Speaking</p>
+        <p class="score-value">5 <span class="score-max">/ 6</span></p>
+        <p class="score-detail">Jun 2024</p>
+      </div>
+      <div class="score-card">
+        <p class="score-test">TOEIC</p>
+        <p class="score-value">855 <span class="score-max">/ 990</span></p>
+        <p class="score-detail">Jul 2021</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-header">
+      <h2>Certifications</h2>
+      <div class="section-line"></div>
+      <span class="section-count">13</span>
+    </div>
+
+    <div class="cert-list">
+
+      <div class="cert-item cert-highlight">
+        <div class="cert-left">
+          <p class="cert-name">AI in Healthcare Specialization</p>
+          <p class="cert-issuer">Stanford University</p>
+        </div>
+        <span class="cert-date">Jan 2024</span>
+      </div>
+
+      <div class="cert-item cert-highlight">
+        <div class="cert-left">
+          <p class="cert-name">GE Aerospace — Explore Electrical Engineering Job Simulation</p>
+          <p class="cert-issuer">Forage</p>
+        </div>
+        <span class="cert-date">Jul 2024</span>
+      </div>
+
+      <div class="cert-item cert-highlight">
+        <div class="cert-left">
+          <p class="cert-name">Practical Training on Generative AI Applications (18 hrs)</p>
+          <p class="cert-issuer">Soonchunhyang University · Ministry of Science and ICT</p>
+        </div>
+        <span class="cert-date">Oct 2024</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-left">
+          <p class="cert-name">Biomedical Visualisation</p>
+          <p class="cert-issuer">University of Glasgow</p>
+        </div>
+        <span class="cert-date">Dec 2023</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-left">
+          <p class="cert-name">Introduction to Medical Software</p>
+          <p class="cert-issuer">Yale University</p>
+        </div>
+        <span class="cert-date">Dec 2023</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-left">
+          <p class="cert-name">MRI Fundamentals</p>
+          <p class="cert-issuer">Korea Advanced Institute of Science and Technology (KAIST)</p>
+        </div>
+        <span class="cert-date">Nov 2023</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-left">
+          <p class="cert-name">Programming for Everybody (Python)</p>
+          <p class="cert-issuer">University of Michigan</p>
+        </div>
+        <span class="cert-date">Jul 2022</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-left">
+          <p class="cert-name">Computer Skills for Employment Preparation</p>
+          <p class="cert-issuer">Soonchunhyang University</p>
+        </div>
+        <span class="cert-date">Dec 2023</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-left">
+          <p class="cert-name">CPR, AED and First Aid</p>
+          <p class="cert-issuer">Alison</p>
+        </div>
+        <span class="cert-date">Jul 2021</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-left">
+          <p class="cert-name">First Step Korean</p>
+          <p class="cert-issuer">Yonsei University</p>
+        </div>
+        <span class="cert-date">Jun 2021</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-left">
+          <p class="cert-name">A Bridge to the World: Korean Language for Beginners I</p>
+          <p class="cert-issuer">Sungkyunkwan University</p>
+        </div>
+        <span class="cert-date">Aug 2021</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-left">
+          <p class="cert-name">A Bridge to the World: Korean Language for Intermediate I</p>
+          <p class="cert-issuer">Sungkyunkwan University</p>
+        </div>
+        <span class="cert-date">Aug 2021</span>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-left">
+          <p class="cert-name">Introduction to Korean Philosophy and Culture</p>
+          <p class="cert-issuer">Sungkyunkwan University</p>
+        </div>
+        <span class="cert-date">Aug 2021</span>
+      </div>
 
     </div>
   </section>
