@@ -693,6 +693,80 @@
       .research-thumb { width: 100%; height: auto; aspect-ratio: 210/297; }
       .nav-links { display: none; }
     }
+    /* ── CONTACT ── */
+    .contact-wrap { max-width: 640px; }
+    .contact-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .contact-field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .contact-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .contact-input {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--text-primary);
+      background: var(--bg);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 0.65rem 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    .contact-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(29,77,58,0.08);
+    }
+    .contact-input::placeholder { color: var(--text-muted); }
+    .contact-textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+    .contact-send {
+      align-self: flex-start;
+      font-family: var(--sans);
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 999px;
+      padding: 0.65rem 1.6rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .contact-send:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .contact-success {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+      display: none;
+      margin-top: 0.25rem;
+    }
+    @media (max-width: 640px) { .contact-field-row { grid-template-columns: 1fr; } }
+
     /* ── LANG SWITCHER ── */
     .lang-switcher {
       display: flex;
@@ -729,13 +803,14 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="#">THN</a>
+    <a class="nav-logo" href="#"><img src="images/logo.png" alt="THN Logo" style="height:32px;width:auto;display:block;"></a>
     <ul class="nav-links">
+      <li><a href="#" data-i18n="nav_home">Home</a></li>
       <li><a href="#education" data-i18n="nav_education">Education</a></li>
       <li><a href="#research" data-i18n="nav_research">Research</a></li>
       <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
       <li><a href="#awards" data-i18n="nav_awards">Awards</a></li>
-      <li><a href="mailto:tharhtetnyan31@gmail.com" data-i18n="nav_contact">Contact</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
@@ -770,7 +845,7 @@
       </div>
 
       <div class="links-row">
-        <a class="link-pill link-pill-primary" href="mailto:tharhtetnyan31@gmail.com">Email</a>
+        <a class="link-pill link-pill-outline" href="mailto:tharhtetnyan31@gmail.com">Email</a>
         <a class="link-pill link-pill-outline" href="https://www.linkedin.com/in/thar-htet-nyan-086132299/">LinkedIn</a>
         <a class="link-pill link-pill-outline" href="https://github.com/tharhtetnyan31/">GitHub</a>
       </div>
@@ -781,6 +856,12 @@
     </div>
   </div>
 
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header">
+      <h2>Skills</h2>
+      <div class="section-line"></div>
+    </div>
   <!-- SKILLS STRIP -->
   <div class="skills-strip">
     <div class="skills-grid">
@@ -817,6 +898,7 @@
       </div>
     </div>
   </div>
+  </section>
 
   <!-- RESEARCH -->
   <section id="research">
@@ -1267,6 +1349,38 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header">
+      <h2>Contact</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-wrap">
+      <p class="contact-sub">Feel free to reach out for research collaborations, project inquiries, or just to connect.</p>
+      <div class="contact-card">
+        <div class="contact-field-row">
+          <div class="contact-field">
+            <label class="contact-label">Name</label>
+            <input class="contact-input" type="text" id="c-name" placeholder="Your name">
+          </div>
+          <div class="contact-field">
+            <label class="contact-label">Email</label>
+            <input class="contact-input" type="email" id="c-email" placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="contact-field">
+          <label class="contact-label">Subject</label>
+          <input class="contact-input" type="text" id="c-subject" placeholder="Subject">
+        </div>
+        <div class="contact-field">
+          <label class="contact-label">Message</label>
+          <textarea class="contact-input contact-textarea" id="c-message" placeholder="Your message..."></textarea>
+        </div>
+        <button class="contact-send" onclick="sendEmail()">Send Message →</button>
+      </div>
+    </div>
+  </section>
+
 </div><!-- /wrapper -->
 
 <!-- FOOTER -->
@@ -1283,7 +1397,7 @@
 <script>
 const translations = {
   en: {
-    nav_education: 'Education', nav_research: 'Research', nav_projects: 'Projects',
+    nav_home: 'Home', nav_education: 'Education', nav_research: 'Research', nav_projects: 'Projects',
     nav_awards: 'Awards', nav_contact: 'Contact',
     eyebrow: 'Biomedical Engineering',
     hero_bio: 'Final-year BME student at <a href="https://home.sch.ac.kr/en/" style="color:var(--accent);text-decoration:none;">Soonchunhyang University</a> and <a href="https://www.studyinkorea.go.kr/en/main.do" style="color:var(--accent);text-decoration:none;">Global Korea Scholar</a> (2022). Undergraduate Researcher at the <a href="https://www.schimedlab.com/" style="color:var(--accent);text-decoration:none;">iMeD Lab</a>, developing neuromodulation, electroceutical, and implantable device solutions.',
@@ -1297,7 +1411,7 @@ const translations = {
     footer_sub: 'Biomedical Engineering · Soonchunhyang University · iMeD Lab',
   },
   ko: {
-    nav_education: '학력', nav_research: '연구', nav_projects: '프로젝트',
+    nav_home: '홈', nav_education: '학력', nav_research: '연구', nav_projects: '프로젝트',
     nav_awards: '수상', nav_contact: '연락',
     eyebrow: '의공학',
     hero_bio: '순천향대학교 의공학과 4학년 재학 중 (2022년 대한민국 정부 초청 장학생 - GKS). <a href="https://www.schimedlab.com/" style="color:var(--accent);text-decoration:none;">iMeD 연구실</a> 학부 연구생으로서 신경 조절(Neuromodulation), 전자약(Electroceuticals) 및 이식형 의료기기 솔루션 개발에 참여하고 있습니다.',
@@ -1311,7 +1425,7 @@ const translations = {
     footer_sub: '의공학과 · 순천향대학교 · iMeD Lab',
   },
   my: {
-    nav_education: 'ပညာရေး', nav_research: 'သုတေသန', nav_projects: 'ပရောဂျက်များ',
+    nav_home: 'ပင်မ', nav_education: 'ပညာရေး', nav_research: 'သုတေသန', nav_projects: 'ပရောဂျက်များ',
     nav_awards: 'ဆုများ', nav_contact: 'ဆက်သွယ်ရန်',
     eyebrow: 'ဇီဝဆေးပညာ အင်ဂျင်နီယာ',
     hero_bio: '<a href="https://home.sch.ac.kr/en/" style="color:var(--accent);text-decoration:none;">ဆွန်ချွန်ဟန်းတက္ကသိုလ်</a> တွင် ဇီဝဆေးဘက်ဆိုင်ရာ အင်ဂျင်နီယာဘာသာရပ် (BME) ဖြင့် နောက်ဆုံးနှစ် တက်ရောက်နေသူ ဖြစ်ပြီး ၂၀၂၂ ခုနှစ်၏ <a href="https://www.studyinkorea.go.kr/en/main.do" style="color:var(--accent);text-decoration:none;">ကိုရီးယားအစိုးရ ပညာသင်ဆု (GKS)</a> ရရှိထားသူ ဖြစ်ပါသည်။ လက်ရှိတွင် <a href="https://www.schimedlab.com/" style="color:var(--accent);text-decoration:none;">iMeD သုတေသနခန်းမ</a>၌ လက်ထောက်သုတေသနပညာရှင်အဖြစ် တာဝန်ယူထားပြီး အာရုံကြောစနစ် ပြုပြင်ထိန်းညှိခြင်း (Neuromodulation)၊ လျှပ်စစ်လှိုင်းသုံး ကုထုံးပညာရပ် (Electroceuticals) နှင့် ခန္ဓာကိုယ်အတွင်း ထည့်သွင်းဆေးဘက်ဆိုင်ရာ ကိရိယာများ ထုတ်လုပ်ခြင်းဆိုင်ရာ နည်းပညာရပ်များကို သုတေသနပြု ဖော်ဆောင်လျက် ရှိပါသည်။',
@@ -1373,6 +1487,18 @@ function setLang(lang) {
   // update html lang attribute
   const langAttr = { en: 'en', ko: 'ko', my: 'my' };
   document.documentElement.lang = langAttr[lang];
+}
+function sendEmail() {
+  const name    = document.getElementById('c-name').value.trim();
+  const email   = document.getElementById('c-email').value.trim();
+  const subject = document.getElementById('c-subject').value.trim();
+  const message = document.getElementById('c-message').value.trim();
+  if (!name || !email || !message) {
+    alert('Please fill in your name, email, and message.');
+    return;
+  }
+  const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+  window.location.href = `mailto:tharhtetnyan31@gmail.com?subject=${encodeURIComponent(subject || 'Message from Portfolio')}&body=${encodeURIComponent(body)}`;
 }
 </script>
 </body>
