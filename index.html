@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -793,6 +794,64 @@
       color: var(--accent);
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
+    /* ── SUCCESS MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      max-width: 340px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    }
+    .modal-check {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2.5px solid #34A853;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    .modal-check svg { width: 32px; height: 32px; }
+    .modal-title {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .modal-sub {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .modal-ok {
+      font-family: var(--sans);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 999px;
+      padding: 0.6rem 1.75rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .modal-ok:hover { background: var(--accent-light); }
+
+    /* loading spinner on button */
+    .contact-send.loading { opacity: 0.7; pointer-events: none; }
   </style>
 </head>
 <body>
@@ -800,7 +859,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="#"><img src="images/logo.png" alt="THN Logo"></a>
+    <img src="images/logo.png" alt="THN Logo" class="nav-logo">
     <ul class="nav-links">
       <li><a href="#" data-i18n="nav_home">Home</a></li>
       <li><a href="#education" data-i18n="nav_education">Education</a></li>
@@ -821,7 +880,7 @@
 <div class="wrapper">
   <div class="hero">
     <div class="hero-text">
-      <p class="hero-eyebrow" data-i18n="eyebrow">Biomedical Engineering</p>
+      <p class="hero-eyebrow" data-i18n="eyebrow">Biomedical Engineer</p>
       <h1>Thar Htet Nyan</h1>
       <p class="hero-bio" data-i18n="hero_bio">
         Final-year BME student at <a href="https://home.sch.ac.kr/en/" style="color:var(--accent);text-decoration:none;">Soonchunhyang University</a> and 
@@ -1377,6 +1436,20 @@
 
 </div><!-- /wrapper -->
 
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-box">
+    <div class="modal-check">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#34A853" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <p class="modal-title">Sent!</p>
+    <p class="modal-sub">Your message has been sent successfully. I'll get back to you soon.</p>
+    <button class="modal-ok" onclick="document.getElementById('successModal').classList.remove('show')">OK!</button>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -1393,7 +1466,7 @@ const translations = {
   en: {
     nav_home: 'Home', nav_education: 'Education', nav_research: 'Research', nav_projects: 'Projects',
     nav_awards: 'Awards', nav_contact: 'Contact',
-    eyebrow: 'Biomedical Engineering',
+    eyebrow: 'Biomedical Engineer',
     hero_bio: 'Final-year BME student at <a href="https://home.sch.ac.kr/en/" style="color:var(--accent);text-decoration:none;">Soonchunhyang University</a> and <a href="https://www.studyinkorea.go.kr/en/main.do" style="color:var(--accent);text-decoration:none;">Global Korea Scholar</a> (2022). Undergraduate Researcher at the <a href="https://www.schimedlab.com/" style="color:var(--accent);text-decoration:none;">iMeD Lab</a>, developing neuromodulation, electroceutical, and implantable device solutions.',
     label_language: 'Language', val_language: 'Burmese (Native) · English · Korean',
     label_research: 'Research', val_research: 'Neuromodulation · Implantable Devices · Electroceuticals',
@@ -1511,17 +1584,45 @@ function setLang(lang) {
   // update html lang attribute
   document.documentElement.lang = lang;
 }
+const EMAILJS_PUBLIC_KEY  = 'G3sz18-Ped_FTM2wy';
+const EMAILJS_SERVICE_ID  = 'service_7ou9gnp';
+const EMAILJS_TEMPLATE_ID = 'template_tygo5re';
+
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
 function sendEmail() {
   const name    = document.getElementById('c-name').value.trim();
   const email   = document.getElementById('c-email').value.trim();
   const subject = document.getElementById('c-subject').value.trim();
   const message = document.getElementById('c-message').value.trim();
+
   if (!name || !email || !message) {
     alert('Please fill in your name, email, and message.');
     return;
   }
-  const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-  window.location.href = `mailto:tharhtetnyan31@gmail.com?subject=${encodeURIComponent(subject || 'Message from Portfolio')}&body=${encodeURIComponent(body)}`;
+
+  const btn = document.querySelector('.contact-send');
+  btn.textContent = 'Sending…';
+  btn.classList.add('loading');
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    name:    name,
+    email:   email,
+    title:   subject || 'Message from Portfolio',
+    message: message,
+  }).then(() => {
+    btn.textContent = 'Send Message →';
+    btn.classList.remove('loading');
+    document.getElementById('c-name').value    = '';
+    document.getElementById('c-email').value   = '';
+    document.getElementById('c-subject').value = '';
+    document.getElementById('c-message').value = '';
+    document.getElementById('successModal').classList.add('show');
+  }).catch((err) => {
+    btn.textContent = 'Send Message →';
+    btn.classList.remove('loading');
+    alert('Failed to send. Please email me directly at tharhtetnyan31@gmail.com\n\nError: ' + JSON.stringify(err));
+  });
 }
 </script>
 </body>
