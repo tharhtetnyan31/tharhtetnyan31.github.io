@@ -1,306 +1,667 @@
 <!DOCTYPE HTML>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Thar Htet Nyan — Biomedical Engineer</title>
+  <meta name="author" content="Thar Htet Nyan">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <title>Thar Htet Nyan</title>
+    :root {
+      --bg: #F7F5F0;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F0EDE6;
+      --text-primary: #1A1814;
+      --text-secondary: #5C5850;
+      --text-muted: #9C9890;
+      --accent: #1D4D3A;
+      --accent-light: #2A6B52;
+      --accent-pale: #E1F0EB;
+      --border: rgba(26,24,20,0.10);
+      --border-strong: rgba(26,24,20,0.18);
+      --tag-bg: #EBF4F0;
+      --tag-text: #1D4D3A;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
 
-    <meta name="author" content="Thar Htet Nyan">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
- 
-  </head>
+    html { scroll-behavior: smooth; }
 
-  <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
-                <p class="name" style="text-align: center;">
-                  Thar Htet Nyan
-                </p>
-    <p>
-      I am a third‑year Biomedical Engineering student at 
-      <a href="https://home.sch.ac.kr/en/">Soonchunhyang University</a> 
-      and a recipient of the 
-      <a href="https://www.studyinkorea.go.kr/en/main.do">Global Korea Scholarship</a> Undergraduate 2022.
-    </p>
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.65;
+      font-size: 15px;
+    }
 
-   
-    <p>
-      Currently, I’m working as an Undergraduate Researcher in the 
-      <a href="https://www.schimedlab.com/">iMeD Lab</a>, 
-      where I develop and evaluate neuromodulation, electroceutical, and 
-      implantable device solutions.
-    </p>
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 245, 240, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+    .nav-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 17px;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
 
-    <p>
-     <strong>Language:</strong>  <a href="https://en.wikipedia.org/wiki/Burmese_language">Burmese</a> (Native), English (Professional), Korean (Professional)  </p>
-<p> <strong>Software & Tools:</strong>  <a href="https://en.wikipedia.org/wiki/Microsoft_Office">Microsoft Office</a>, <a href="https://www.autodesk.com/products/inventor/overview">Autodesk Inventor</a>, <a href="https://www.cadence.com/en_US/home/tools/pcb-design-and-analysis/orcad.html">OrCAD</a>, <a href="https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html">LTspice</a>, <a href="https://www.lego.com/en-us/themes/mindstorms">LEGO® MINDSTORMS®</a> 
-, <a https://www.comsol.com/">COMSOL</a>, <a href="https://www.ansys.com/">ANSYS</a>  </p>
-				  
-<p> <strong>Programming Languages:</strong>  Python (Lego Robotics & Data Analysis), C++ (<a href="https://www.arduino.cc">Arduino</a>), C (<a href=">https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a> , <a href="https://www.microchip.com/en-us/product/atmega128">Atmega128</a>, Embedded) 
-    </p>
+    /* ── WRAPPER ── */
+    .wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
+    /* ── HERO ── */
+    .hero {
+      padding: 5rem 0 4rem;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 3rem;
+      align-items: start;
+    }
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--accent);
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-bio {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: 2rem;
+    }
+    .meta-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      font-size: 13.5px;
+    }
+    .meta-label {
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      min-width: 80px;
+      flex-shrink: 0;
+    }
+    .meta-value { color: var(--text-secondary); }
+    .meta-value a { color: var(--accent); text-decoration: none; }
+    .meta-value a:hover { text-decoration: underline; }
 
-                <p style="text-align:center">
-                  <a href="mailto:tharhtetnyan31@gmail.com">Email</a> &nbsp;/&nbsp;
-                  <a href="data/CV latest THNd.pdf">CV</a> &nbsp;/&nbsp;
-                  <a href="https://www.linkedin.com/in/thar-htet-nyan-086132299/">Linkedin</a> &nbsp;/&nbsp;
-                 <a href="https://github.com/tharhtetnyan31/">Github</a>
-                </p>
-              </td>
-              <td style="padding:2.5%;width:37%;max-width:37%">
-                <a href="images/THN.jpg"><img style="width:100%;max-width:100%;object-fit: cover; border-radius: 50%;" alt="profile photo" src="images/THN.jpg" class="hoverZoomLink"></a>
-              </td>
-            </tr>
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 12.5px;
+      font-weight: 500;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .link-pill-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .link-pill-primary:hover { background: var(--accent-light); }
+    .link-pill-outline {
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      color: var(--text-secondary);
+    }
+    .link-pill-outline:hover {
+      background: var(--bg-card);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
+    /* Photo */
+    .hero-photo-wrap {
+      position: relative;
+      padding-top: 0.5rem;
+    }
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--border);
+    }
+    .photo-badge {
+      position: absolute;
+      bottom: -10px;
+      left: -10px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+    }
 
-			  
+    /* ── SKILLS ROW ── */
+    .skills-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.75rem 0;
+      margin-bottom: 4rem;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-block { }
+    .skill-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .tag {
+      font-size: 11.5px;
+      font-weight: 500;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+    .tag-gray {
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+    }
 
-		  </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:16px;width:100%;vertical-align:middle">
-                <h2>Research</h2>
-               	
-              </td>
-            </tr>
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    /* ── SECTION ── */
+    section { margin-bottom: 5rem; }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2.25rem;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .section-count {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
 
+    /* ── RESEARCH CARDS ── */
+    .research-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .research-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .research-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 24px rgba(29,77,58,0.08);
+    }
+    .research-thumb {
+      width: 100px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: var(--bg-subtle);
+      flex-shrink: 0;
+    }
+    .research-venue {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .research-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 0.4rem;
+    }
+    .research-authors {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+    .research-authors strong { color: var(--text-secondary); }
+    .research-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+    .badge-green { background: #E1F0EB; color: #1D4D3A; }
+    .badge-blue  { background: #E6EEFF; color: #1840A0; }
 
-<tr>
-  <td style="padding:16px;width:20%;vertical-align:middle">
-    <img src="images/20261poster.png" width="100%" alt="TIS Rat Model Poster">
-  </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
-    <a href="data/20261.pdf">
-      <span class="papertitle">Effect of Electrode Configuration on Temporal Interference Electric Fields in a Rat Model</span>
-    </a>
-    <br>
-    <strong>Thar Htet Nyan*</strong>, Suhyeok Kim, Yejin Jeon, Seojun Oh, Eunkyoung Park
-    <br>
-    <em>2026 Spring Conference of the Korean Society of Medical and Biological Engineering (KOSOMBE), Jeju Shinhwa World</em>
-    <p></p>
-    <p>
-      I was honored to present my 3rd poster presentation titled “Effect of Electrode Configuration on Temporal Interference Electric Fields in a Rat Model” at the 2026 Spring Conference of the Korean Society of Medical and Biological Engineering (KOSOMBE), held at Jeju Shinhwa World. This work explored how electrode configuration influences electric field distribution, focality, and targeting efficiency in temporal interference stimulation using COMSOL-based rat model simulations for bladder-targeted neuromodulation.
-    </p>
-  </td>
-</tr>
+    /* ── PROJECT GRID ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .project-media {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      background: var(--bg-subtle);
+      display: block;
+    }
+    .project-body { padding: 1rem 1.125rem 1.25rem; flex: 1; }
+    .project-category {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+    .project-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+    }
+    .project-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
 
-			  
-		  <tr>
-  <td style="padding:16px;width:20%;vertical-align:middle">
-    <img src="images/review.png" width="100%" alt="Review Article">
-  </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
-    <a href="data/12345.pdf">
-      <span class="papertitle">Emerging Implantable Tibial Nerve Stimulation Devices for Overactive Bladder</span>
-    </a>
-    <br>
-    <strong>Thar Htet Nyan*</strong>, Eunkyoung Park
-    <br>
-    <em>International Neurourology Journal, 2025;29(3):1-11</em>  <strong>Impact Factor: 2.1 (2024 JCR)</strong>
-    <p></p>
-    <p>
-      Our review article, <em>“Emerging Implantable Tibial Nerve Stimulation Devices for Overactive Bladder”</em>, provides a comprehensive analysis of iPTNS devices, covering clinical outcomes, technical features, and regulatory aspects. It highlights current progress, key challenges, and future directions for improving OAB management.
-    </p>
-  </td>
-</tr>
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      text-align: center;
+    }
+    .footer-inner { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+    .footer-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .footer-sub { font-size: 12.5px; color: var(--text-muted); }
 
-		  <tr>
-  <td style="padding:16px;width:20%;vertical-align:middle">
-    <img src="images/itns_poster.png" width="100%" alt="ITNS Poster">
-  </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
-    <a href="data/itns_poster.pdf">
-      <span class="papertitle">Implantable Tibial Nerve Stimulation for Refractory Overactive Bladder</span>
-    </a>
-    <br>
-    <strong>Thar Htet Nyan*</strong>, Suhyeok Kim, Yejin Jeon, Eunkyoung Park
-    <br>
-    <em>2025 Spring Conference of the Korean Society of Medical and Biological Engineering (KOSOMBE), Jeju</em>
-    <p></p>
-    <p>
-      I’m honored to have presented my research poster titled “Implantable Tibial Nerve Stimulation for Refractory Overactive Bladder” at the 2025 Spring Conference of the Korean Society of Medical and Biological Engineering (KOSOMBE), held in Jeju.
-         
-    </p>
-  </td>
-</tr>
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 3rem 0 2.5rem;
+      }
+      .hero-photo-wrap { order: -1; max-width: 140px; }
+      nav { padding: 0 1rem; }
+      .wrapper { padding: 0 1.25rem; }
+      .research-card { grid-template-columns: 1fr; }
+      .research-thumb { width: 100%; height: 120px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
 
-	<tr>
-  <td style="padding:16px;width:20%;vertical-align:middle">
-    <img src="images/tis.png" width="100%" alt="TIS Poster">
-  </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
-    <a href="data/tis_tharhtet.pdf">
-      <span class="papertitle">Effects of Electrode Placement on Temporal Interference Stimulation: Phantom Model and Simulation Study</span>
-    </a>
-    <br>
-    <strong>Thar Htet Nyan*</strong>, Hyunji Kim, Suhyeok Kim, Yejin Jeon, Eunkyoung Park
-    <br>
-    <em>2025 Autumn Conference of the Korean Society of Medical and Biological Engineering (KOSOMBE), Gimhae</em>
-    <p></p>
-    <p>
-      It was a great opportunity to present our poster titled “Effects of Electrode Placement on Temporal Interference Stimulation: Phantom Model and Simulation Study” at the 2025 Autumn Conference of the Korean Society of Medical and Biological Engineering (KOSOMBE), held in Gimhae.
-    </p>
-  </td>
-</tr>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">THN</a>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="data/CV latest THNd.pdf">CV</a></li>
+      <li><a href="mailto:tharhtetnyan31@gmail.com">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-		  
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:16px;width:100%;vertical-align:middle">
-                <h2>Projects</h2>
-                <p>
-                 I am particularly interested in <strong>Microprocessors</strong>, <strong>Embedded Systems</strong>, <strong>Electronics</strong>, <strong>Neuromodulation</strong>, and <strong>Medical Device Innovation</strong>, with a focus on applying these technologies to real-world biomedical challenges.
-		</p>
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px 10px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<!-- HERO -->
+<div class="wrapper">
+  <div class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Biomedical Engineering</p>
+      <h1>Thar Htet<br><em>Nyan</em></h1>
+      <p class="hero-bio">
+        Third-year BME student at <a href="https://home.sch.ac.kr/en/" style="color:var(--accent);text-decoration:none;">Soonchunhyang University</a> and 
+        <a href="https://www.studyinkorea.go.kr/en/main.do" style="color:var(--accent);text-decoration:none;">Global Korea Scholar</a> (2022).
+        Undergraduate Researcher at the <a href="https://www.schimedlab.com/" style="color:var(--accent);text-decoration:none;">iMeD Lab</a>, 
+        developing neuromodulation, electroceutical, and implantable device solutions.
+      </p>
 
-<tr>
-  <td style="padding:16px;width:20%;vertical-align:middle">
-    <video width="100%" autoplay muted playsinline loop>
-      <source src="data/bladder.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
-    <a href="data/bladder.pdf">
-      <span class="papertitle">Patient-Specific Bladder Digital Twin (Two-Way FSI)</span>
-    </a>
-    <br>
-    <strong>Thar Htet Nyan*</strong>
-    <p></p>
-    <p>
-      A patient-specific bladder simulation developed using MRI-based 3D reconstruction and two-way fluid–structure interaction in ANSYS. The model simulates bladder filling from 100–700 mL, visualizing urine flow dynamics and bladder wall deformation to demonstrate the potential of digital twins for non-invasive urodynamic assessment.
-    </p>
-  </td>
-</tr>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-label">Language</span>
+          <span class="meta-value">Burmese (Native) · English · Korean</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Research</span>
+          <span class="meta-value">Neuromodulation · Implantable Devices · Electroceuticals</span>
+        </div>
+      </div>
 
-   <tr onmouseout="ecg_stop()" onmouseover="ecg_start()">
-  <td style="padding:16px;width:20%;vertical-align:middle">
-    <div class="one">
-      <div class="two" id='ecg_image'>
-        <img src='images/ecg_board.jpg' width="100%" alt="ECG Board" style="border-radius: 0;">
+      <div class="links-row">
+        <a class="link-pill link-pill-primary" href="data/CV latest THNd.pdf">↓ Curriculum Vitae</a>
+        <a class="link-pill link-pill-outline" href="mailto:tharhtetnyan31@gmail.com">Email</a>
+        <a class="link-pill link-pill-outline" href="https://www.linkedin.com/in/thar-htet-nyan-086132299/">LinkedIn</a>
+        <a class="link-pill link-pill-outline" href="https://github.com/tharhtetnyan31/">GitHub</a>
       </div>
     </div>
-    <script type="text/javascript">
-      function ecg_start() {
-        document.getElementById('ecg_image').style.opacity = "1";
-      }
 
-      function ecg_stop() {
-        document.getElementById('ecg_image').style.opacity = "1";
-      }
-      ecg_stop();
-    </script>
-  </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
-    <span class="papertitle"><a href="images/ecg_board.jpg">Minimalistic Finger ECG Board</a></span>
-    <br>
-    <strong>Thar Htet Nyan*</strong>
-    <p></p>
-    <p>
-      A compact ECG sensing board designed to capture heart signals using only two thumbs and one toe for grounding. Built with an AD620 instrumentation amplifier, the system supports real-time signal display via oscilloscope. Sized like an iPhone, it offers a portable and minimalistic approach to biosignal monitoring.
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="images/THN.jpg" alt="Thar Htet Nyan">
+      <span class="photo-badge">iMeD Lab</span>
+    </div>
+  </div>
+
+  <!-- SKILLS STRIP -->
+  <div class="skills-strip">
+    <div class="skills-grid">
+      <div class="skill-block">
+        <p class="skill-title">Simulation</p>
+        <div class="skill-tags">
+          <span class="tag">COMSOL</span>
+          <span class="tag">ANSYS</span>
+          <span class="tag">LTspice</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <p class="skill-title">CAD & PCB</p>
+        <div class="skill-tags">
+          <span class="tag">Autodesk Inventor</span>
+          <span class="tag">OrCAD</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <p class="skill-title">Programming</p>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">C++</span>
+          <span class="tag">C / Embedded</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <p class="skill-title">Hardware</p>
+        <div class="skill-tags">
+          <span class="tag">Arduino</span>
+          <span class="tag">STM32</span>
+          <span class="tag">Atmega128</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="section-header">
+      <h2>Research</h2>
+      <div class="section-line"></div>
+      <span class="section-count">04</span>
+    </div>
+
+    <div class="research-list">
+
+      <!-- Paper 1 -->
+      <a class="research-card" href="data/20261.pdf">
+        <img class="research-thumb" src="images/20261poster.png" alt="TIS Rat Model">
+        <div>
+          <p class="research-venue">KOSOMBE 2026 Spring · Jeju Shinhwa World</p>
+          <p class="research-title">Effect of Electrode Configuration on Temporal Interference Electric Fields in a Rat Model</p>
+          <p class="research-authors"><strong>Thar Htet Nyan*</strong>, Suhyeok Kim, Yejin Jeon, Seojun Oh, Eunkyoung Park</p>
+          <p class="research-desc">Explored how electrode configuration influences electric field distribution, focality, and targeting efficiency in temporal interference stimulation using COMSOL-based rat model simulations for bladder-targeted neuromodulation.</p>
+        </div>
+      </a>
+
+      <!-- Paper 2 -->
+      <a class="research-card" href="data/12345.pdf">
+        <img class="research-thumb" src="images/review.png" alt="Review Article">
+        <div>
+          <p class="research-venue">International Neurourology Journal · 2025;29(3):1–11</p>
+          <p class="research-title">Emerging Implantable Tibial Nerve Stimulation Devices for Overactive Bladder</p>
+          <p class="research-authors"><strong>Thar Htet Nyan*</strong>, Eunkyoung Park</p>
+          <p class="research-desc">Comprehensive analysis of iPTNS devices covering clinical outcomes, technical features, and regulatory aspects. Highlights current progress, key challenges, and future directions for improving OAB management.</p>
+          <div style="margin-top:0.6rem;">
+            <span class="badge badge-green">IF 2.1 (2024 JCR)</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Paper 3 -->
+      <a class="research-card" href="data/itns_poster.pdf">
+        <img class="research-thumb" src="images/itns_poster.png" alt="ITNS Poster">
+        <div>
+          <p class="research-venue">KOSOMBE 2025 Spring · Jeju</p>
+          <p class="research-title">Implantable Tibial Nerve Stimulation for Refractory Overactive Bladder</p>
+          <p class="research-authors"><strong>Thar Htet Nyan*</strong>, Suhyeok Kim, Yejin Jeon, Eunkyoung Park</p>
+          <p class="research-desc">Poster presentation examining implantable PTNS as a next-generation therapy for patients with refractory overactive bladder, reviewing device design and clinical evidence.</p>
+        </div>
+      </a>
+
+      <!-- Paper 4 -->
+      <a class="research-card" href="data/tis_tharhtet.pdf">
+        <img class="research-thumb" src="images/tis.png" alt="TIS Poster">
+        <div>
+          <p class="research-venue">KOSOMBE 2025 Autumn · Gimhae</p>
+          <p class="research-title">Effects of Electrode Placement on Temporal Interference Stimulation: Phantom Model and Simulation Study</p>
+          <p class="research-authors"><strong>Thar Htet Nyan*</strong>, Hyunji Kim, Suhyeok Kim, Yejin Jeon, Eunkyoung Park</p>
+          <p class="research-desc">Investigated electrode placement strategies for TIS using phantom models and computational simulations, evaluating focality and penetration depth trade-offs.</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header">
+      <h2>Projects</h2>
+      <div class="section-line"></div>
+      <span class="section-count">06</span>
+    </div>
+
+    <div class="projects-grid">
+
+      <a class="project-card" href="data/bladder.pdf">
+        <video class="project-media" autoplay muted playsinline loop>
+          <source src="data/bladder.mp4" type="video/mp4">
+        </video>
+        <div class="project-body">
+          <p class="project-category">Simulation · ANSYS</p>
+          <p class="project-title">Patient-Specific Bladder Digital Twin (Two-Way FSI)</p>
+          <p class="project-desc">MRI-based 3D reconstruction with fluid–structure interaction simulating 100–700 mL filling dynamics for non-invasive urodynamic assessment.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="images/ecg_board.jpg">
+        <img class="project-media" src="images/ecg_board.jpg" alt="ECG Board">
+        <div class="project-body">
+          <p class="project-category">Electronics · Biosignal</p>
+          <p class="project-title">Minimalistic Finger ECG Board</p>
+          <p class="project-desc">AD620-based compact ECG board using two thumbs and one toe for grounding. iPhone-sized with real-time oscilloscope output.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="images/sportwheelchair.gif">
+        <img class="project-media" src="images/sportwheelchair.gif" alt="Sports Wheelchair">
+        <div class="project-body">
+          <p class="project-category">CAD · Assistive Tech</p>
+          <p class="project-title">High-Performance Sports Wheelchair</p>
+          <p class="project-desc">Lightweight wheelchair inspired by Japanese jinrikisha design. Ergonomic frame and enhanced maneuverability for assistive sports.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="images/wheelchair.gif">
+        <img class="project-media" src="images/wheelchair.gif" alt="Smart Wheelchair">
+        <div class="project-body">
+          <p class="project-category">CAD · Medical Device</p>
+          <p class="project-title">Smart Ergonomic Wheelchair</p>
+          <p class="project-desc">Feature-rich design with MagSafe holder, cup holder, anti-tip bars, and reclined cushioned backrest for comfort and safety.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="data/colorsorter2.mp4">
+        <video class="project-media" autoplay muted playsinline loop>
+          <source src="data/colorsorter2.mp4" type="video/mp4">
+        </video>
+        <div class="project-body">
+          <p class="project-category">Robotics · Python</p>
+          <p class="project-title">Lego Color Sorter V.2</p>
+          <p class="project-desc">Dual synchronized conveyors with multi-stage sorting arms. Enhanced speed, precision, and real-time color recognition.</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="data/colorsorter1.mp4">
+        <video class="project-media" autoplay muted playsinline loop>
+          <source src="data/colorsorter1.mp4" type="video/mp4">
+        </video>
+        <div class="project-body">
+          <p class="project-category">Robotics · Python</p>
+          <p class="project-title">Lego Color Sorter V.1</p>
+          <p class="project-desc">Sorts 16 blocks in 20 seconds. Motorized pusher, rotating rail, push-button trigger, and real-time color sensor integration.</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+</div><!-- /wrapper -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-name">Thar Htet Nyan</p>
+    <p class="footer-sub">Biomedical Engineering · Soonchunhyang University · iMeD Lab</p>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:0.75rem;">
+      <a href="mailto:tharhtetnyan31@gmail.com" style="color:var(--accent);text-decoration:none;">tharhtetnyan31@gmail.com</a>
     </p>
-  </td>
-</tr>
+  </div>
+</footer>
 
-
-
-<tr>
-  <td style="padding:16px;width:20%;vertical-align:middle">
-    <img src="images/sportwheelchair.gif" width="100%" alt="High-Performance Sports Wheelchair">
-  </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
-	   <a href="images/sportwheelchair.gif">
-    <span class="papertitle">High-Performance Sports Wheelchair</span>
-		   </a>
-    <br>
-    <strong>Thar Htet Nyan*</strong>
-    <p></p>
-    <p>
-      A lightweight, high-performance wheelchair designed using Autodesk Inventor. It features a durable frame, ergonomic seating, and enhanced maneuverability. 
-      Inspired by traditional Japanese rickshaws (jinrikisha), this design blends cultural elegance with modern engineering for athletes in assistive sports.
-    </p>
-  </td>
-</tr>
-
-<tr>
-  <td style="padding:16px;width:20%;vertical-align:middle">
-    <img src="images/wheelchair.gif" width="100%" alt="Smart Ergonomic Wheelchair">
-  </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
-    <a href="images/wheelchair.gif">
-      <span class="papertitle">Smart Ergonomic Wheelchair</span>
-    </a>
-    <br>
-    <strong>Thar Htet Nyan*</strong>
-    <p></p>
-    <p>
-      A modern wheelchair designed with Autodesk Inventor, featuring a MagSafe phone holder, cup holder, storage box, anti-tip bars, and a reclined cushioned backrest. The design prioritizes user comfort, safety, and ease of mobility through thoughtful engineering.
-    </p>
-  </td>
-</tr>
-
-
-<tr>
-  <td style="padding:16px;width:20%;vertical-align:middle">
-    <video width="100%" autoplay muted playsinline loop>
-      <source src="data/colorsorter2.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
-    <a href="data/colorsorter2.mp4">
-      <span class="papertitle">Lego Color Sorter V.2</span>
-    </a>
-    <br>
-    <strong>Thar Htet Nyan*</strong>
-    <p></p>
-    <p>
-      An upgraded autonomous sorting system built with LEGO Mindstorms and Python. V.2 features dual synchronized conveyors, multi-stage sorting arms, enhanced speed and precision, and optimized real-time color recognition. Designed for improved throughput and mechanical coordination in educational robotics.
-    </p>
-  </td>
-</tr>
-
-<tr>
-  <td style="padding:16px;width:20%;vertical-align:middle">
-    <video width="100%" autoplay muted playsinline loop>
-      <source src="data/colorsorter1.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </td>
-  <td style="padding:8px;width:80%;vertical-align:middle">
-    <a href="data/colorsorter1.mp4">
-      <span class="papertitle">Lego Color Sorter V.1</span>
-    </a>
-    <br>
-    <strong>Thar Htet Nyan*</strong>
-    <p></p>
-    <p>
-      A Python-based color sorting system capable of sorting 16 blocks in 20 seconds. Features include a motorized pusher, rotating rail, push-button trigger, and real-time color sensor. Highlights skills in robotics, sensor integration, and mechanical design.
-    </p>
-  </td>
-</tr>
-
-
-    
-        
-              </td>
-            </tr>
-          </tbody></table>
-        </td>
-      </tr>
-    </table>
-  </body>
+</body>
 </html>
