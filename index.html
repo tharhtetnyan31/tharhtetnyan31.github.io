@@ -693,6 +693,35 @@
       .research-thumb { width: 100%; height: auto; aspect-ratio: 210/297; }
       .nav-links { display: none; }
     }
+    /* ── LANG SWITCHER ── */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      padding: 3px;
+    }
+    .lang-btn {
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.18s;
+      font-family: var(--sans);
+    }
+    .lang-btn:hover { color: var(--text-primary); }
+    .lang-btn.active {
+      background: var(--bg-card);
+      color: var(--accent);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
   </style>
 </head>
 <body>
@@ -702,12 +731,17 @@
   <div class="nav-inner">
     <a class="nav-logo" href="#">THN</a>
     <ul class="nav-links">
-      <li><a href="#education">Education</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="mailto:tharhtetnyan31@gmail.com">Contact</a></li>
+      <li><a href="#education" data-i18n="nav_education">Education</a></li>
+      <li><a href="#research" data-i18n="nav_research">Research</a></li>
+      <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+      <li><a href="#awards" data-i18n="nav_awards">Awards</a></li>
+      <li><a href="mailto:tharhtetnyan31@gmail.com" data-i18n="nav_contact">Contact</a></li>
     </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ko')">한국어</button>
+      <button class="lang-btn" onclick="setLang('my')">မြန်မာ</button>
+    </div>
   </div>
 </nav>
 
@@ -715,9 +749,9 @@
 <div class="wrapper">
   <div class="hero">
     <div class="hero-text">
-      <p class="hero-eyebrow">Biomedical Engineering</p>
+      <p class="hero-eyebrow" data-i18n="eyebrow">Biomedical Engineering</p>
       <h1>Thar Htet Nyan</h1>
-      <p class="hero-bio">
+      <p class="hero-bio" data-i18n="hero_bio">
         Final-year BME student at <a href="https://home.sch.ac.kr/en/" style="color:var(--accent);text-decoration:none;">Soonchunhyang University</a> and 
         <a href="https://www.studyinkorea.go.kr/en/main.do" style="color:var(--accent);text-decoration:none;">Global Korea Scholar</a> (2022).
         Undergraduate Researcher at the <a href="https://www.schimedlab.com/" style="color:var(--accent);text-decoration:none;">iMeD Lab</a>, 
@@ -726,12 +760,12 @@
 
       <div class="hero-meta">
         <div class="meta-item">
-          <span class="meta-label">Language</span>
-          <span class="meta-value">Burmese (Native) · English · Korean</span>
+          <span class="meta-label" data-i18n="label_language">Language</span>
+          <span class="meta-value" data-i18n="val_language">Burmese (Native) · English · Korean</span>
         </div>
         <div class="meta-item">
-          <span class="meta-label">Research</span>
-          <span class="meta-value">Neuromodulation · Implantable Devices · Electroceuticals</span>
+          <span class="meta-label" data-i18n="label_research">Research</span>
+          <span class="meta-value" data-i18n="val_research">Neuromodulation · Implantable Devices · Electroceuticals</span>
         </div>
       </div>
 
@@ -1246,5 +1280,100 @@
   </div>
 </footer>
 
+<script>
+const translations = {
+  en: {
+    nav_education: 'Education', nav_research: 'Research', nav_projects: 'Projects',
+    nav_awards: 'Awards', nav_contact: 'Contact',
+    eyebrow: 'Biomedical Engineering',
+    hero_bio: 'Final-year BME student at <a href="https://home.sch.ac.kr/en/" style="color:var(--accent);text-decoration:none;">Soonchunhyang University</a> and <a href="https://www.studyinkorea.go.kr/en/main.do" style="color:var(--accent);text-decoration:none;">Global Korea Scholar</a> (2022). Undergraduate Researcher at the <a href="https://www.schimedlab.com/" style="color:var(--accent);text-decoration:none;">iMeD Lab</a>, developing neuromodulation, electroceutical, and implantable device solutions.',
+    label_language: 'Language', val_language: 'Burmese (Native) · English · Korean',
+    label_research: 'Research', val_research: 'Neuromodulation · Implantable Devices · Electroceuticals',
+    sec_education: 'Education', sec_experience: 'Experience',
+    sec_research: 'Research', sec_projects: 'Projects',
+    sec_awards: 'Awards & Honours', sec_languages: 'Languages & Test Scores',
+    sec_certifications: 'Certifications',
+    skills_sim: 'Simulation', skills_cad: 'CAD & PCB', skills_prog: 'Programming', skills_hw: 'Hardware',
+    footer_sub: 'Biomedical Engineering · Soonchunhyang University · iMeD Lab',
+  },
+  ko: {
+    nav_education: '학력', nav_research: '연구', nav_projects: '프로젝트',
+    nav_awards: '수상', nav_contact: '연락',
+    eyebrow: '의공학',
+    hero_bio: '순천향대학교 의공학과 4학년 재학 중 (2022년 대한민국 정부 초청 장학생 - GKS). <a href="https://www.schimedlab.com/" style="color:var(--accent);text-decoration:none;">iMeD 연구실</a> 학부 연구생으로서 신경 조절(Neuromodulation), 전자약(Electroceuticals) 및 이식형 의료기기 솔루션 개발에 참여하고 있습니다.',
+    label_language: '언어', val_language: '미얀마어 (모국어) · 영어 · 한국어',
+    label_research: '연구 분야', val_research: '신경조절 · 이식형 기기 · 전기치료',
+    sec_education: '학력', sec_experience: '경력',
+    sec_research: '연구', sec_projects: '프로젝트',
+    sec_awards: '수상 및 장학', sec_languages: '언어 및 시험 성적',
+    sec_certifications: '자격증 및 수료',
+    skills_sim: '시뮬레이션', skills_cad: 'CAD & PCB', skills_prog: '프로그래밍', skills_hw: '하드웨어',
+    footer_sub: '의공학과 · 순천향대학교 · iMeD Lab',
+  },
+  my: {
+    nav_education: 'ပညာရေး', nav_research: 'သုတေသန', nav_projects: 'ပရောဂျက်များ',
+    nav_awards: 'ဆုများ', nav_contact: 'ဆက်သွယ်ရန်',
+    eyebrow: 'ဇီဝဆေးပညာ အင်ဂျင်နီယာ',
+    hero_bio: '<a href="https://home.sch.ac.kr/en/" style="color:var(--accent);text-decoration:none;">ဆွန်ချွန်ဟန်းတက္ကသိုလ်</a> တွင် ဇီဝဆေးဘက်ဆိုင်ရာ အင်ဂျင်နီယာဘာသာရပ် (BME) ဖြင့် နောက်ဆုံးနှစ် တက်ရောက်နေသူ ဖြစ်ပြီး ၂၀၂၂ ခုနှစ်၏ <a href="https://www.studyinkorea.go.kr/en/main.do" style="color:var(--accent);text-decoration:none;">ကိုရီးယားအစိုးရ ပညာသင်ဆု (GKS)</a> ရရှိထားသူ ဖြစ်ပါသည်။ လက်ရှိတွင် <a href="https://www.schimedlab.com/" style="color:var(--accent);text-decoration:none;">iMeD သုတေသနခန်းမ</a>၌ လက်ထောက်သုတေသနပညာရှင်အဖြစ် တာဝန်ယူထားပြီး အာရုံကြောစနစ် ပြုပြင်ထိန်းညှိခြင်း (Neuromodulation)၊ လျှပ်စစ်လှိုင်းသုံး ကုထုံးပညာရပ် (Electroceuticals) နှင့် ခန္ဓာကိုယ်အတွင်း ထည့်သွင်းဆေးဘက်ဆိုင်ရာ ကိရိယာများ ထုတ်လုပ်ခြင်းဆိုင်ရာ နည်းပညာရပ်များကို သုတေသနပြု ဖော်ဆောင်လျက် ရှိပါသည်။',
+    label_language: 'ဘာသာစကား', val_language: 'မြန်မာ (မိခင်ဘာသာ) · အင်္ဂလိပ် · ကိုရီးယား',
+    label_research: 'သုတေသန', val_research: 'အာရုံကြောစနစ် ပြုပြင်ထိန်းညှိခြင်း · ခန္ဓာကိုယ်အတွင်း ထည့်သွင်းကိရိယာများ · လျှပ်စစ်လှိုင်းသုံး ကုထုံးပညာရပ်',
+    sec_education: 'ပညာရေး', sec_experience: 'အတွေ့အကြုံ',
+    sec_research: 'သုတေသန', sec_projects: 'ပရောဂျက်များ',
+    sec_awards: 'ဆုနှင့် ဂုဏ်ထူး', sec_languages: 'ဘာသာစကားနှင့် စာမေးပွဲရမှတ်',
+    sec_certifications: 'လက်မှတ်များ',
+    skills_sim: 'ကွန်ပျူတာသုံး ပုံစံတူ စမ်းသပ်တွက်ချက်ခြင်း', skills_cad: 'CAD & PCB', skills_prog: 'ပရိုဂရမ်ရေးခြင်း', skills_hw: 'ဟာ့ဒ်ဝဲ',
+    footer_sub: 'ဇီဝဆေးပညာ အင်ဂျင်နီယာ · Soonchunhyang တက္ကသိုလ် · iMeD Lab',
+  }
+};
+
+const sectionKeys = {
+  sec_education: ['Education','학력','ပညာရေး'],
+  sec_experience: ['Experience','경력','အတွေ့အကြုံ'],
+  sec_research: ['Research','연구','သုတေသန'],
+  sec_projects: ['Projects','프로젝트','ပရောဂျက်များ'],
+  sec_awards: ['Awards & Honours','수상 및 장학','ဆုနှင့် ဂုဏ်ထူး'],
+  sec_languages: ['Languages & Test Scores','언어 및 시험 성적','ဘာသာစကားနှင့် စာမေးပွဲရမှတ်'],
+  sec_certifications: ['Certifications','자격증 및 수료','လက်မှတ်များ'],
+};
+
+function setLang(lang) {
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // section h2 headings — match by text content
+  document.querySelectorAll('section h2, .two-col h2').forEach(h2 => {
+    const text = h2.textContent.trim();
+    for (const [key, vals] of Object.entries(sectionKeys)) {
+      if (vals.includes(text)) {
+        const idx = lang === 'en' ? 0 : lang === 'ko' ? 1 : 2;
+        h2.textContent = vals[idx];
+        break;
+      }
+    }
+  });
+
+  // skill titles
+  const skillMap = { en: ['Simulation','CAD & PCB','Programming','Hardware'],
+                     ko: ['시뮬레이션','CAD & PCB','프로그래밍','하드웨어'],
+                     my: ['ကွန်ပျူတာသုံး ပုံစံတူ စမ်းသပ်တွက်ချက်ခြင်း','CAD & PCB','ပရိုဂရမ်ရေးခြင်း','ဟာ့ဒ်ဝဲ'] };
+  document.querySelectorAll('.skill-title').forEach((el, i) => {
+    if (skillMap[lang][i]) el.textContent = skillMap[lang][i];
+  });
+
+  // footer sub
+  document.querySelectorAll('.footer-sub').forEach(el => el.textContent = t.footer_sub);
+
+  // update active button
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // update html lang attribute
+  const langAttr = { en: 'en', ko: 'ko', my: 'my' };
+  document.documentElement.lang = langAttr[lang];
+}
+</script>
 </body>
 </html>
