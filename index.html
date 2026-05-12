@@ -362,8 +362,8 @@
     }
     .project-media {
       width: 100%;
-      max-height: 260px;
-      object-fit: contain;
+      height: 200px;
+      object-fit: cover;
       background: var(--bg-subtle);
       display: block;
     }
@@ -656,7 +656,7 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
-    .cert-highlight .cert-name { color: var(--accent); }
+    /* certs all same color */
 
     /* two-col layout for edu + experience side by side */
     .two-col {
@@ -1109,7 +1109,7 @@
             <div class="edu-dot-col">
               <p class="edu-inst">Soonchunhyang University</p>
               <p class="edu-degree">B.E. Biomedical Engineering</p>
-              <span class="edu-grade">⭐ GPA 4.45 / 4.5</span>
+              <span class="edu-grade">GPA 4.45 / 4.5</span>
             </div>
           </div>
 
@@ -1215,7 +1215,7 @@
         <p class="award-date">2023 – 2025 (every semester)</p>
       </div>
 
-      <div class="award-card">
+      <div class="award-card award-highlight">
         <div class="award-icon">🎓</div>
         <p class="award-title">Global Korea Scholarship (GKS) Undergraduate</p>
         <p class="award-issuer">NIIED · Ministry of Education</p>
@@ -1487,7 +1487,7 @@ const translations = {
   ko: {
     nav_home: '홈', nav_education: '학력', nav_research: '연구', nav_projects: '프로젝트',
     nav_awards: '수상', nav_contact: '연락',
-    eyebrow: '의공학',
+    eyebrow: '의공학자',
     hero_bio: '순천향대학교 의공학과 4학년 재학 중 (2022년 대한민국 정부 초청 장학생 - GKS). <a href="https://www.schimedlab.com/" style="color:var(--accent);text-decoration:none;">iMeD 연구실</a> 학부 연구생으로서 신경 조절(Neuromodulation), 전자약(Electroceuticals) 및 이식형 의료기기 솔루션 개발에 참여하고 있습니다.',
     label_language: '언어', val_language: '미얀마어 (모국어) · 영어 · 한국어',
     label_research: '연구 분야', val_research: '신경조절 · 이식형 기기 · 전기치료',
@@ -1495,6 +1495,7 @@ const translations = {
     sec_research: '연구', sec_projects: '프로젝트',
     sec_awards: '수상 및 장학', sec_languages: '언어 및 시험 성적',
     sec_certifications: '자격증 및 수료',
+    sec_skills: '전문 분야',
     skills_sim: '시뮬레이션', skills_cad: 'CAD & PCB', skills_prog: '프로그래밍', skills_hw: '하드웨어',
     footer_sub: '의공학과 · 순천향대학교 · iMeD Lab',
     contact_title: '문의 및 연락', contact_sub: '연구 협업, 프로젝트 문의 또는 단순한 네트워킹을 원하신다면 언제든 편하게 연락해 주시기 바랍니다.',
@@ -1512,6 +1513,7 @@ const translations = {
     sec_research: 'သုတေသန', sec_projects: 'ပရောဂျက်များ',
     sec_awards: 'ဆုနှင့် ဂုဏ်ထူး', sec_languages: 'ဘာသာစကားနှင့် စာမေးပွဲရမှတ်',
     sec_certifications: 'လက်မှတ်များ',
+    sec_skills: 'နည်းပညာဆိုင်ရာ ကျွမ်းကျင်မှုများ',
     skills_sim: 'ကွန်ပျူတာသုံး ပုံစံတူ စမ်းသပ်တွက်ချက်ခြင်း', skills_cad: 'CAD & PCB', skills_prog: 'ပရိုဂရမ်ရေးခြင်း', skills_hw: 'ဟာ့ဒ်ဝဲ',
     footer_sub: 'ဇီဝဆေးပညာ အင်ဂျင်နီယာ · Soonchunhyang တက္ကသိုလ် · iMeD Lab',
     contact_title: 'ဆက်သွယ်ရန်', contact_sub: 'သုတေသနလုပ်ငန်းများ အတူတူလုပ်ဆောင်ရန်၊ ပရောဂျက်များနှင့်ပတ်သက်၍ စုံစမ်းမေးမြန်းရန် သို့မဟုတ် ရင်းနှီးစွာ ချိတ်ဆက်နိုင်ရန်အတွက် အချိန်မရွေး ဆက်သွယ်နိုင်ပါသည်။',
@@ -1521,6 +1523,7 @@ const translations = {
 };
 
 const sectionKeys = {
+  sec_skills: ['Skills','전문 분야','နည်းပညာဆိုင်ရာ ကျွမ်းကျင်မှုများ'],
   sec_education: ['Education','학력','ပညာရေး'],
   sec_experience: ['Experience','경력','အတွေ့အကြုံ'],
   sec_research: ['Research','연구','သုတေသန'],
